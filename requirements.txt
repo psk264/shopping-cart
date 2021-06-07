@@ -1,0 +1,7 @@
+  
+# This is a "requirements.txt" file.  This file is need to instruct pip command to install third-party packages on the Anaconda containers.  
+# This file lists the packages require to successfully run this program. 
+
+#Python-dotenv reads key-value pairs from a .env file and can set them as environment variables. 
+# Reference: https://pypi.org/project/python-dotenv/
+python-dotenv

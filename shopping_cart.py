@@ -1,5 +1,11 @@
 # shopping_cart.py
+import os
+import pprint 
+import datetime
+from myfunctions import calculate_tax, to_usd 
+from dotenv import load_dotenv
 
+load_dotenv()
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -24,21 +30,9 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
-
-    Param: my_price (int or float) like 4000.444444
-
-    Example: to_usd(4000.444444)
-
-    Returns: $4,000.44
-    """
-    return f"${my_price:,.2f}" #> $12,000.71
 
 
 # TODO: write some Python code here to produce the desired output
-
 print(len(products))
 
 selected_ids = []
@@ -51,22 +45,53 @@ selected_ids = []
 
 while True:
     selected_id = input("Please select a valid product id or DONE: ")
-    if selected_id == "DONE":
-        break
-    else:
-        selected_ids.append(selected_id)
-    print(selected_id)
+    selected_id = selected_id.upper()
+    try:
+        if selected_id == "DONE":
+            break
+        elif (int(selected_id) <1 or int(selected_id) > len(products)):
+            print("Hey, are you sure that product identifier is correct? Please try again!") 
+        else:
+            selected_ids.append(selected_id)
+        print("You entered:", selected_id)
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
 
-print("WE HAVE REACHED THE END OF THE LOOP")
-print(selected_ids)
+# print("WE HAVE REACHED THE END OF THE LOOP")
+# print(selected_ids)
 
 # 2) Perform product look ups to determine what the product name and price are
 # selected_ids = ['1', '2', '3', '4', '1', '2', '3']
-
-for selected_id in selected_ids:
-    print(selected_id)
-    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-    matching_products = matching_products[0]
-    print(matching_products["name"], matching_products["price"])
 # look up the corresponding product!
 # or maybe display the selected products later
+
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_products = matching_products[0]
+    print(selected_id, " ", matching_products["name"], to_usd(int(matching_products["price"])))
+
+subtotal = 0.0
+# 3) Printing Receipt:
+print("---------------------------------\nGREEN FOODS GROCERY\nWWW.GREEN-FOODS-GROCERY.COM\n ---------------------------------")
+current_date = datetime.datetime.now()
+print("CHECKOUT AT:", current_date.strftime("%Y-%m-%d %H:%M%p"))
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
+if(len(selected_ids)>0):
+    for selected_id in selected_ids:
+        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_products = matching_products[0]
+        print(selected_id, " ", matching_products["name"], to_usd(float(matching_products["price"])))
+        subtotal = subtotal + float(matching_products["price"])
+else:
+    print("0. No items entered.")
+print("---------------------------------")
+print("SUBTOTAL:", to_usd(subtotal))
+tax = calculate_tax(subtotal)
+print("TAX (set as environment var", str(float(os.getenv("TAX_RATE"))*100) + "%):", to_usd(tax))
+print("TOTAL:", to_usd(subtotal+tax))
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------")
+
+
