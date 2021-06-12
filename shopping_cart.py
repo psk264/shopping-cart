@@ -64,34 +64,38 @@ while True:
 # selected_ids = ['1', '2', '3', '4', '1', '2', '3']
 # look up the corresponding product!
 # or maybe display the selected products later
-
+print("SELECTED PRODUCTS:")
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_products = matching_products[0]
-    print(selected_id, " ", matching_products["name"], to_usd(int(matching_products["price"])))
+    print(f"{selected_id:<5}{str(matching_products['name']):<65} {str(to_usd(float(matching_products['price']))):>10}")
+    # print(selected_id, " ", matching_products["name"], to_usd(int(matching_products["price"])))
 
 subtotal = 0.0
 # 3) Printing Receipt:
-print("---------------------------------\nGREEN FOODS GROCERY\nWWW.GREEN-FOODS-GROCERY.COM\n ---------------------------------")
+print("----------------------------------------------------------------------------------")
+print(f"{'GREEN FOODS GROCERY':^80}")
+print(f"{'WWW.GREEN-FOODS-GROCERY.COM':^80}")
+print("----------------------------------------------------------------------------------")
 current_date = datetime.datetime.now()
 print("CHECKOUT AT:", current_date.strftime("%Y-%m-%d %I:%M %p"))
-print("---------------------------------")
+print("----------------------------------------------------------------------------------")
 print("SELECTED PRODUCTS:")
 if(len(selected_ids)>0):
     for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_products = matching_products[0]
-        print(selected_id, " ", matching_products["name"], to_usd(float(matching_products["price"])))
+        print(f"{selected_id:<5}{str(matching_products['name']):<65} {str(to_usd(float(matching_products['price']))):>10}")
         subtotal = subtotal + float(matching_products["price"])
 else:
     print("0. No items entered.")
-print("---------------------------------")
-print("SUBTOTAL:", to_usd(subtotal))
+print("-----------------------------------------------------------------------------------")
+print(f"SUBTOTAL:, {str(to_usd(subtotal)):>70}")
 tax = calculate_tax(subtotal)
-print("TAX (set as environment var", str(float(os.getenv("TAX_RATE"))*100) + "%):", to_usd(tax))
-print("TOTAL:", to_usd(subtotal+tax))
-print("---------------------------------")
-print("THANKS, SEE YOU AGAIN SOON!")
-print("---------------------------------")
+print(f"TAX (set as environment var {str(float(os.getenv('TAX_RATE'))*100)}%) {str(to_usd(tax)):>46}")
+print(f"TOTAL:{str(to_usd(subtotal+tax)):>75}")
+print("-----------------------------------------------------------------------------------")
+print(f"{'THANKS, SEE YOU AGAIN SOON!':^80}")
+print("-----------------------------------------------------------------------------------")
 
 
