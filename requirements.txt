@@ -5,3 +5,6 @@
 #Python-dotenv reads key-value pairs from a .env file and can set them as environment variables. 
 # Reference: https://pypi.org/project/python-dotenv/
 python-dotenv
+sendgrid
+gspread 
+oauth2client
