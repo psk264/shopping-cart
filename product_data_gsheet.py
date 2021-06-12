@@ -23,10 +23,10 @@ AUTH_SCOPE = [
 ]
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, AUTH_SCOPE)
-print("CREDS:", type(credentials)) #> <class 'oauth2client.service_account.ServiceAccountCredentials'>
+# print("CREDS:", type(credentials)) #> <class 'oauth2client.service_account.ServiceAccountCredentials'>
 
 client = gspread.authorize(credentials)
-print("CLIENT:", type(client)) #> <class 'gspread.client.Client'>
+# print("CLIENT:", type(client)) #> <class 'gspread.client.Client'>
 
 #
 # READ SHEET VALUES
@@ -54,7 +54,7 @@ def get_list_products():
 
 
 #
-# WRITE VALUES TO SHEET
+# WRITE VALUES TO GOOGLE SHEET
 #
 # see: https://gspread.readthedocs.io/en/latest/api.html#gspread.models.Worksheet.insert_row
 def add_new_product():
