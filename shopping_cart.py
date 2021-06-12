@@ -74,7 +74,7 @@ subtotal = 0.0
 # 3) Printing Receipt:
 print("---------------------------------\nGREEN FOODS GROCERY\nWWW.GREEN-FOODS-GROCERY.COM\n ---------------------------------")
 current_date = datetime.datetime.now()
-print("CHECKOUT AT:", current_date.strftime("%Y-%m-%d %H:%M%p"))
+print("CHECKOUT AT:", current_date.strftime("%Y-%m-%d %I:%M %p"))
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 if(len(selected_ids)>0):
