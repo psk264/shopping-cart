@@ -1,3 +1,6 @@
+#! Adopted from Professor Rossetti
+# Reference: https://github.com/prof-rossetti/intro-to-python/blob/main/notes/python/packages/gspread.md
+
 import os
 from dotenv import load_dotenv
 import gspread
