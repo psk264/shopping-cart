@@ -4,42 +4,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import datetime
 import smtplib
- 
-# Following custom function (NOT COMPLETE) is to send the email receipt via email 
-# .. using SendGrid's Python Library: https://github.com/sendgrid/sendgrid-python
-# SendGrid blocked my account so I was unable to complete this part of code 
-# .. but I used SMTP as a workaround, seen below. 
 
-def send_email_receipt_sendgrid():
-    load_dotenv()
-
-    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
-    SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
-    CUSTOMER_ADDRESS=SENDER_ADDRESS #Send default value in case of empty customer email address
-    CUSTOMER_ADDRESS = input("Please enter customer's email address")
-    client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
-    print("CLIENT:", type(client))
-
-    subject = "Your Receipt from the Green Grocery Store"
-
-    html_content = "Hello World"
-    print("HTML:", html_content)
-
-    # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
-    # ... but we can customize the `to_emails` param to send to other addresses
-    message = Mail(from_email=SENDER_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
-
-    try:
-        response = client.send(message)
-
-        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
-        print(response.status_code) #> 202 indicates SUCCESS
-        print(response.body)
-        print(response.headers)
-
-    except Exception as err:
-        print(type(err))
-        print(err)
 
 #
 #!/usr/bin/python3
@@ -102,3 +67,41 @@ def store_receipt_in_file(receipt_txt):
     else:
         print("Sorry, receipt file cannot be save! No receipt text found.")
         exit()
+
+
+ 
+# Following custom function (NOT COMPLETE) is to send the email receipt via email 
+# .. using SendGrid's Python Library: https://github.com/sendgrid/sendgrid-python
+# SendGrid blocked my account so I was unable to complete this part of code 
+# .. but I used SMTP as a workaround, seen below. 
+
+def send_email_receipt_sendgrid(receipt_text):
+    load_dotenv()
+
+    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+    SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+    CUSTOMER_ADDRESS=SENDER_ADDRESS #Send default value in case of empty customer email address
+    CUSTOMER_ADDRESS = input("Please enter customer's email address")
+    client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+    print("CLIENT:", type(client))
+
+    subject = "Your Receipt from the Green Grocery Store"
+
+    html_content = receipt_text
+    print("HTML:", html_content)
+
+    # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
+    # ... but we can customize the `to_emails` param to send to other addresses
+    message = Mail(from_email=SENDER_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
+
+    try:
+        response = client.send(message)
+
+        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+        print(response.status_code) #> 202 indicates SUCCESS
+        print(response.body)
+        print(response.headers)
+
+    except Exception as err:
+        print(type(err))
+        print(err)
