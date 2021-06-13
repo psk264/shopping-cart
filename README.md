@@ -14,7 +14,8 @@ This repository holds the code for the shopping-cart project.
 2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
 3. Let Admin input the tax rate through environment variable stored in .env file.  By default it is set to 8.75%. To update the tax rate during runtime use command: 
 4. Generate receipt with list of selected products, quantity, price, subtotal, tax and total amount.  The receipt also shows the store name and website at top and prints a thank you message in the bottom. <br> Here is an example of approach 1: <br>  <img src="https://user-images.githubusercontent.com/84349071/121815589-3f324180-cc45-11eb-90a2-cf70885e3861.png" alt="command-line-output" width="650" height="650"> <br>
-and for approach 2: <br> <img src="https://user-images.githubusercontent.com/84349071/121816481-e4e7af80-cc49-11eb-9894-143bdd292965.png" alt="command-line-output_price_per_lb" width="650" height="650">
+and for approach 2: <br> <img src="https://user-images.githubusercontent.com/84349071/121816481-e4e7af80-cc49-11eb-9894-143bdd292965.png" alt="command-line-output_price_per_lb" width="650" height="650"> <br>
+approach 2 with aggregated weight for items measured in pounds, when user enters the product multiple times with different weight <br>  <img src="https://user-images.githubusercontent.com/84349071/121822242-11142800-cc6c-11eb-923d-688253f435fb.png" alt="command-line-output_price_per_lb_agg_weight" width="650" height="650"> <br>
 5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
 6. Receipt is also emailed to the customer at their email address ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
 
