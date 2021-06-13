@@ -18,6 +18,8 @@ and for approach 2: <br> <img src="https://user-images.githubusercontent.com/843
 5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
 6. Receipt is also emailed to the customer at their email address ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
 
+**NOTE:** More details can be found under [Additional Information](
+
 ### This program is implemented with 2 appraoches:
 1. Approach 1 - Products data supports only price per item
 2. Approach 2 - Products data supports both quantity with price per pound and price per item  
