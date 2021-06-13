@@ -40,7 +40,7 @@ products =  product_data_gsheet.get_list_products_lb()
 def is_price_per_lb(selected_id):
     for p in products:
         if str(p["id"]) == str(selected_id) and "pound" in p["price_per"] :
-            print(products.index(p))
+            # print(products.index(p))
             return products.index(p)
     return 999999
 
@@ -82,7 +82,12 @@ while True:
             selected_ids.append(selected_id)
             pindex= is_price_per_lb(selected_id)
             if  pindex in valid_ids:
-               pounds[selected_id] = input(f"Enter the weight for {products[pindex]['name']}: ")
+                # pounds[selected_id] = input(f"Enter the weight for {products[pindex]['name']}: ")
+                temp_weight = input(f"Enter the weight for {products[pindex]['name']}: ")
+                if selected_id in pounds.keys():
+                  pounds[selected_id] = str(float(pounds[selected_id])+float(temp_weight))
+                else:
+                    pounds[selected_id] = temp_weight    
         print("You entered:", selected_id)
     except ValueError:
         print("Oops!  That was no valid number.  Try again...")
@@ -96,6 +101,15 @@ while True:
 # or maybe display the selected products later
 max_len = 0  #this could be use to make the spacing between the product name and price dynamic.
 selected_products_list = []
+
+## Block of code to remove duplicate selected ID for price_per == pound columns 
+#.. so it can display total weight instead of multiple entries for these items
+for id in selected_ids:
+    if id in pounds.keys():
+        while id in selected_ids:
+            selected_ids.remove(id)
+        selected_ids.append(id)         
+
 print("SELECTED PRODUCTS:")
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
