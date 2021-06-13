@@ -11,11 +11,10 @@ This repository holds the code for the shopping-cart project.
 1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for ease of scalability and maintainability 
 2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
 3. Let Admin input the tax rate through environment variable.  By default it is set to 8.875%.
-4. Generate receipt with list of selected products, quantity, price, subtotal, tax and total amount.  The receipt also shows the store name and website at top and prints a Thank you message in the bottom. Here is an example of approach 1:  <img src="https://user-images.githubusercontent.com/84349071/121815589-3f324180-cc45-11eb-90a2-cf70885e3861.png" alt="command-line-output" width="650" height="650"> 
-OR for approach 2:
-<img src="https://user-images.githubusercontent.com/84349071/121816481-e4e7af80-cc49-11eb-9894-143bdd292965.png" alt="command-line-output_price_per_lb" width="650" height="650">
+4. Generate receipt with list of selected products, quantity, price, subtotal, tax and total amount.  The receipt also shows the store name and website at top and prints a thank you message in the bottom. <br> Here is an example of approach 1: <br>  <img src="https://user-images.githubusercontent.com/84349071/121815589-3f324180-cc45-11eb-90a2-cf70885e3861.png" alt="command-line-output" width="650" height="650"> <br>
+and for approach 2: <br> <img src="https://user-images.githubusercontent.com/84349071/121816481-e4e7af80-cc49-11eb-9894-143bdd292965.png" alt="command-line-output_price_per_lb" width="650" height="650">
 5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
-6. Receipt is also emailed to the customer at their email address  ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
+6. Receipt is also emailed to the customer at their email address ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
 
 ### This program is implemented with 2 appraoches:
 1. Approach 1 - Products data supports only price per item
