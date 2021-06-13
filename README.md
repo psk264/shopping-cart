@@ -1,4 +1,4 @@
-# shopping-cart project assignment
+# Project Assignment - Shopping Cart 🛒📃✉️ 
 ## Prerequisite
 * Anaconda 3.7+
 * Python 3.7+
@@ -66,9 +66,6 @@ In in the root directory of your local repository, create a new file called ".en
   7. Note the sheet name for products data and in .env file update ```SHEET_NAME``` with sheet name
   8. Note the sheet name for products data with quantity + price per lb and in .env file update ```SHEET_PRICE_PER_LB``` with sheet name
 
- 
-
-
 ## Instructions
 1. Use git client to clone or download this remote repository, [shopping-cart](https://github.com/psk264/shopping-cart), on your local machine.  Note the location where it is cloned or downloaded
 2. Use command line application to navigate to the location where this repository was cloned or downloaded.  Ensure that ``<base>`` from conda initialization is shown on cmd line.  If ``<base>`` is not shown then, before proceeding, run command:<br/>
@@ -87,6 +84,9 @@ Products price per pound and per item:  ```python shopping_cart_price_per_lb.py`
 ## Additional Information
 * This repository uses google sheet to store the products data: https://docs.google.com/spreadsheets/d/1zwpGSvJO1o2ssPLwKQWEiLlWLK97ahRn3TMHq5sAwSU/
 * Program has 2 approaches to store data 
-  1. List of dictionaries
-  2. Google Sheet
-* Program has 2 approaches to send receipt 
+  1. List of dictionaries (hardcoded in `shopping_cart.py` and in `shopping_cart_price_per_lb.py`)
+  2. Google Sheet (this approaches uses custom function defined in `product_data_gsheet.py`)
+* Program has 3 approaches to process receipt 
+  1. Display on terminal or command line (code can be found in the main script files: `shopping_cart.py` and in `shopping_cart_price_per_lb.py`)
+  2. Store in file in receipts directory with current system timestamp as the filename (code can be found in custom function `send_email_receipt_smtp(receipt_text)` defined in `receipt_processing.py`, it takes receipt text as input)
+  3. Email the receipt at customer's email address (code can be found in custom function `store_receipt_in_file(receipt_text)` defined in `receipt_processing.py`, it takes receipt text as input)
