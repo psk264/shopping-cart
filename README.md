@@ -1,9 +1,54 @@
-# shopping-cart
+# shopping-cart project assignment
+## Prerequisite
+* Anaconda 3.7+
+* Python 3.7+
+* Pip
+* Git Bash
 
-# Instructions:
-1. Clone the remote repository on your local environment
-2. Using command-line navigate to the directory where this repo is downloaded
-3. Ensure that "<\base>" is shown 
+## Objective
+This repo holds the code for the shopping-cart project ::.  
+This programs has following capabilities:
+1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for easy scalability and maintainability 
+2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
+3. Let Admin input the tax rate through environment variable.  By default it is set to 8.875%.
+4. Generate receipt with list of selected products, quantity, price, subtotal, tax and total amount.  The receipt also shows the store name and website at top and prints a Thank you message in the bottom ![command-line-output](https://user-images.githubusercontent.com/84349071/121815589-3f324180-cc45-11eb-90a2-cf70885e3861.png)
+5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
+6. Receipt is also emailed to the customer at their email address  ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
+
+There are 2 ways to play this game!  To play using command line please use the script file [**_game.py_**](https://github.com/psk264/rock-paper-scissors-exercise/blob/main/game.py) and to play using GUI use the script file [**_game-with-gui.py_**](https://github.com/psk264/rock-paper-scissors-exercise/blob/main/game-with-gui.py) in following instructions. 
+
+## Third-party Packages
+* [python-dotenv](https://pypi.org/project/python-dotenv/)
+* [sendgrid](https://github.com/sendgrid/sendgrid-python)
+* [gspread](https://github.com/burnash/gspread) 
+* [oauth2client](https://pypi.org/project/oauth2client/)
+
+## Instructions
+1. Use git client to clone or download this remote repository, [shopping-cart](https://github.com/psk264/shopping-cart), on your local machine.  Note the location where it is cloned or downloaded
+2. Use command line application to navigate to the location where this repository was cloned or downloaded.  Ensure that ``<base>`` from conda initialization is shown on cmd line.  If ``<base>`` is not shown then, before proceeding, run command:<br/>
+```conda init bash```
+3. Since this code uses specific packages like python-dotenv, it is recommended to create a new project specific anaconda virtual environment. Here we create virtual environment name "shopping-cart-env" using following command.  To create a environment with a different name, simply replace rpc-game-env with desired name:<br/>
+``` conda create -n shopping-cart-env python=3.8```
+4. Activate the Anaconda environment "shopping-cart-env" using the command:<br/>
+```conda activate shopping-cart-env```
+5. After virtual environment is active i.e. ``<shopping-cart-env>`` is shown on command-line, then install the third-party package python-dotenv on this virtual environment using command:<br/>
+ ```pip install -r requirements.txt```<br/>
+**NOTE:** The requirements.txt file is already provided in the repository.
+6. After the setup is complete, depending on your preference to play using command line or GUI execute and start the game using one of the following commands:<br/>
+Play using command prompt:  ```python game.py```   
+Play using GUI:  ```python game-with-gui.py```  <br/>  
+
+**NOTE:** Depending on which approach is commented out on the game.py, the script will either ask for player name on command line or read "Jane Doe" from .env file. Details about different approaches are listed below. 
+
+## Additional Information
+* The game.py code file demostrate 3 different approaches to get player name
+  1. Taking the player name as input from command line
+  2. Reading the player name from env file
+  3. Reading the player name from the command line using env (by importing os package)
+* The game.py code file demostrate 2 different approached to game logic
+  1. Seperate if-elif blocks
+  2. Single if-elif-else block 
+* A separate script file named game-with-gui.py has the code to play this game from GUI. To run the GUI mode, please follow same steps as above but substitute game.py with game-with-gui.py
 
 
 # Additional Information
