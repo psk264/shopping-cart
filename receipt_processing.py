@@ -15,7 +15,8 @@ def send_email_receipt_sendgrid():
 
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
     SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
-    CUSTOMER_ADDRESS = input("Please enter customer's email address", default=SENDER_ADDRESS)
+    CUSTOMER_ADDRESS=SENDER_ADDRESS #Send default value in case of empty customer email address
+    CUSTOMER_ADDRESS = input("Please enter customer's email address")
     client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
     print("CLIENT:", type(client))
 
@@ -58,12 +59,12 @@ def send_email_receipt_smtp(receipt_text):
     CUSTOMER_ADDRESS = input("Please enter customer's email address: ")
 
     while len(CUSTOMER_ADDRESS)>0:
-        if("@" not in CUSTOMER_ADDRESS and "." not in CUSTOMER_ADDRESS):
+        if("@" in CUSTOMER_ADDRESS and "." in CUSTOMER_ADDRESS):
+            break
+        else:
             print("Sorry, you entered invalid email address")
             print("Please review and print the receipt instead. A copy of receipt is stored in receipts directory")
             return
-        else:
-            break
 
     sender = SENDER_ADDRESS
     receivers = [CUSTOMER_ADDRESS]
