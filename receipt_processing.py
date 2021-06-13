@@ -15,7 +15,8 @@ def send_email_receipt_sendgrid():
 
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
     SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
-
+    CUSTOMER_ADDRESS=SENDER_ADDRESS #Send default value in case of empty customer email address
+    CUSTOMER_ADDRESS = input("Please enter customer's email address")
     client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
     print("CLIENT:", type(client))
 
@@ -26,7 +27,7 @@ def send_email_receipt_sendgrid():
 
     # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
     # ... but we can customize the `to_emails` param to send to other addresses
-    message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html_content)
+    message = Mail(from_email=SENDER_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
 
     try:
         response = client.send(message)
@@ -54,8 +55,19 @@ def send_email_receipt_smtp(receipt_text):
     SENDER_ADDRESS = os.getenv("GMAIL_SENDER", default="OOPS, please set env var called 'SENDER_ADDRESS'")
     SENDER_AUTH = os.getenv("GMAIL_AUTH")
     EMAIL_SERVER = os.getenv("EMAIL_SERVER_SMTP")
+    CUSTOMER_ADDRESS=SENDER_ADDRESS #Send default value in case of empty customer email address
+    CUSTOMER_ADDRESS = input("Please enter customer's email address: ")
+
+    while len(CUSTOMER_ADDRESS)>0:
+        if("@" in CUSTOMER_ADDRESS and "." in CUSTOMER_ADDRESS):
+            break
+        else:
+            print("Sorry, you entered invalid email address")
+            print("Please review and print the receipt instead. A copy of receipt is stored in receipts directory")
+            return
+
     sender = SENDER_ADDRESS
-    receivers = [SENDER_ADDRESS]
+    receivers = [CUSTOMER_ADDRESS]
 
     message = """Subject: Receipt -  GREEN FOODS GROCERY""" + receipt_text
 
