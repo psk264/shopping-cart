@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import product_data_gsheet
 
 load_dotenv()
+# Uncomment below and comment line 36 to use hardcoded product data
 # products = [
 #     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
 #     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -163,6 +164,6 @@ receipt_text = receipt_text_header + receipt_text_product_list + receipt_text_fo
 
 store_receipt_in_file(receipt_text) #uncomment this line to store receipt in text file under receipts folder
 send_email_receipt_smtp(receipt_text) #uncomment this line to send email via email using smtp setting
-# send_email_receipt_sendgrid(receipt_text) #uncomment this line to send email via SendGrid package
+# send_email_receipt_sendgrid(receipt_text) #uncomment this line to send email via SendGrid package. Note: I was unable to complete and test email receipt using SendGrid due to account suspension 
 
 
