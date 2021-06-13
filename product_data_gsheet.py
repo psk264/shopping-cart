@@ -7,7 +7,7 @@ load_dotenv()
 
 DOCUMENT_ID = os.getenv("GOOGLE_SHEET_ID", default="OOPS")
 SHEET_NAME = os.getenv("SHEET_NAME", default="Products-2021")
-
+SHEET_NAME_LB = os.getenv("SHEET_PRICE_PER_LB", default = "Products-2021")
 #
 # AUTHORIZATION
 #
@@ -52,7 +52,10 @@ def get_list_products():
     #     print(row) #> <class 'dict'>
     return rows
 
-
+def get_list_products_lb():
+    sheet = doc.worksheet(SHEET_NAME_LB)
+    rows = sheet.get_all_records()
+    return rows
 #
 # WRITE VALUES TO GOOGLE SHEET
 #
