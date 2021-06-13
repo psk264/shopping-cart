@@ -6,8 +6,8 @@
 * Git Bash
 
 ## Objective
-This repo holds the code for the shopping-cart project ::.  
-This programs has following capabilities:
+This repository holds the code for the shopping-cart project.    
+###This programs has following capabilities:
 1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for easy scalability and maintainability 
 2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
 3. Let Admin input the tax rate through environment variable.  By default it is set to 8.875%.
