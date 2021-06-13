@@ -8,7 +8,7 @@
 ## Objective
 This repository holds the code for the shopping-cart project.    
 ### This programs has following capabilities:
-1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for easy scalability and maintainability 
+1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for ease of scalability and maintainability 
 2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
 3. Let Admin input the tax rate through environment variable.  By default it is set to 8.875%.
 4. Generate receipt with list of selected products, quantity, price, subtotal, tax and total amount.  The receipt also shows the store name and website at top and prints a Thank you message in the bottom ![command-line-output](https://user-images.githubusercontent.com/84349071/121815589-3f324180-cc45-11eb-90a2-cf70885e3861.png)
