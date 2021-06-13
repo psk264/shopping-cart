@@ -15,7 +15,12 @@ This programs has following capabilities:
 5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
 6. Receipt is also emailed to the customer at their email address  ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
 
-There are 2 ways to play this game!  To play using command line please use the script file [**_game.py_**](https://github.com/psk264/rock-paper-scissors-exercise/blob/main/game.py) and to play using GUI use the script file [**_game-with-gui.py_**](https://github.com/psk264/rock-paper-scissors-exercise/blob/main/game-with-gui.py) in following instructions. 
+This program is implemented with 2 appraoches:
+1. Approach 1 - Products data supports only price per item
+2. Approach 2 - Products data supports both quantity with price per pound and price per item  
+**NOTE:** Both approach support all the capabilities mentioned above. 
+
+To launch the program in first mode with approach 1 using command line please use the script file [**_shopping-cart.py_**](https://github.com/psk264/shopping-cart/blob/main/shopping_cart.py) and to launch program in mode with approach 2 use the script file [**_shopping_cart_price_per_lb.py_**](https://github.com/psk264/shopping-cart/blob/main/shopping_cart_price_per_lb.py) in following instructions. 
 
 ## Third-party Packages
 * [python-dotenv](https://pypi.org/project/python-dotenv/)
@@ -34,22 +39,9 @@ There are 2 ways to play this game!  To play using command line please use the s
 5. After virtual environment is active i.e. ``<shopping-cart-env>`` is shown on command-line, then install the third-party package python-dotenv on this virtual environment using command:<br/>
  ```pip install -r requirements.txt```<br/>
 **NOTE:** The requirements.txt file is already provided in the repository.
-6. After the setup is complete, depending on your preference to play using command line or GUI execute and start the game using one of the following commands:<br/>
-Play using command prompt:  ```python game.py```   
-Play using GUI:  ```python game-with-gui.py```  <br/>  
-
-**NOTE:** Depending on which approach is commented out on the game.py, the script will either ask for player name on command line or read "Jane Doe" from .env file. Details about different approaches are listed below. 
+6. After the setup is complete, depending on your preference on appraoches mentioned above, start the program using one of the following commands:<br/>
+Products price per item only:  ```python shopping-cart.py```   
+Products price per pound and per item:  ```python shopping_cart_price_per_lb.py```  <br/>  
 
 ## Additional Information
-* The game.py code file demostrate 3 different approaches to get player name
-  1. Taking the player name as input from command line
-  2. Reading the player name from env file
-  3. Reading the player name from the command line using env (by importing os package)
-* The game.py code file demostrate 2 different approached to game logic
-  1. Seperate if-elif blocks
-  2. Single if-elif-else block 
-* A separate script file named game-with-gui.py has the code to play this game from GUI. To run the GUI mode, please follow same steps as above but substitute game.py with game-with-gui.py
-
-
-# Additional Information
 * This repository uses google sheet to store the products data: https://docs.google.com/spreadsheets/d/1zwpGSvJO1o2ssPLwKQWEiLlWLK97ahRn3TMHq5sAwSU/
