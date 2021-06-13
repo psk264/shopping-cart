@@ -7,7 +7,7 @@
 
 ## Objective
 This repository holds the code for the shopping-cart project.    
-###This programs has following capabilities:
+### This programs has following capabilities:
 1. Read and store products data two ways: (i) list of dictionaries  (ii) google sheet for easy scalability and maintainability 
 2. Let the checkout clerk, view the list of all valid product IDs and enter the products IDs during checkout
 3. Let Admin input the tax rate through environment variable.  By default it is set to 8.875%.
@@ -15,7 +15,7 @@ This repository holds the code for the shopping-cart project.
 5. Receipt is also stored in the file under receipts folder for easy viewing and printing ![receipt-price-per-pound-stored-in-file](https://user-images.githubusercontent.com/84349071/121815599-4bb69a00-cc45-11eb-9380-d5753f19eb05.png)
 6. Receipt is also emailed to the customer at their email address  ![receipt-sent-via-email](https://user-images.githubusercontent.com/84349071/121815602-4fe2b780-cc45-11eb-93f7-093d39415f74.png)
 
-This program is implemented with 2 appraoches:
+### This program is implemented with 2 appraoches:
 1. Approach 1 - Products data supports only price per item
 2. Approach 2 - Products data supports both quantity with price per pound and price per item  
 **NOTE:** Both approach support all the capabilities mentioned above. 
